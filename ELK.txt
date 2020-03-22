@@ -3,9 +3,13 @@ Monitoring
 
 Monitoring can be done using ELK.we can install elastic and kibana 7.2 in one sever .
 
-logstash and filebeat abd metricbeat can be installed in another server with 7.2 version.
+Logstash can be installed on another server.
 
-metricbeat will be used to collect statics of the server and filebeat can be used to analyze/chek the logs.
+Filebeat abd Metricbeat can be installed in another server. if required for service uptime heartbeat can be used.
+
+Metricbeat will be used to collect statics of the server and filebeat can be used to analyze/check the logs.
+
+Metricbeat , Filebeat and heatbeat are the deamons which needs to installed on the client server . we can follow the elasticsearch website for installation and configurations.
 
 https://www.elastic.co/downloads/past-releases/elasticsearch-7-2-0
 
