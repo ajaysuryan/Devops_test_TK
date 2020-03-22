@@ -1,0 +1,47 @@
+
+// create Red Hat linux instances
+
+terraform {
+required version = "0.11.7"
+}
+
+provider "aws" {
+   version = "= 1.19.0"
+
+region = "N. Virginia"
+
+resource "aws_instance" "Petclinic" {
+  ami                         = "ami-id"
+  instance_type               = "m4.large"
+  key_name                    = "dwe-key-pair"
+  vpc_security_group_ids      = ["${aws_security_group.dwe-sg-ssh.id}"]
+  subnet_id                   = "${aws_subnet.dwe-subnet.id}"
+  associate_public_ip_address = "true"
+  user_data = "${data.template_file.user_data}"
+ 
+  root_block_device {
+    volume_size           = "50"
+    volume_type           = "standard"
+    delete_on_termination = "true"
+  }
+
+resource "aws_ebs_volume" Petclinic" {
+
+count = "${var.ebs_count}"
+Availabiity_zone = us-east-1
+encrypted = true
+}
+
+data "template_file" "user_data" {
+template = "${file(var.user_data_path})}"
+vars {
+
+chef_role = "${var.chef_role}"
+}
+
+
+ 
+  tags = {
+    Name = "Petclinic"
+  } 
+}

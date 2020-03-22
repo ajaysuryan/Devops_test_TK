@@ -1,0 +1,4 @@
+variable "chef_role" {
+type = "string"
+default = "jenkins_server"
+}
